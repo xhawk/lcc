@@ -1,0 +1,1 @@
+var lcc = angular.module('lcc', []);

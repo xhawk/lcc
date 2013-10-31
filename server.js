@@ -1,52 +1,26 @@
 /**
- * Module dependencies.
+ * Fire up everything
+ * Created using http://clock.co.uk/tech-blogs/a-simple-website-in-nodejs-with-express-jade-and-stylus article
  */
-var express = require('express'),
-    fs = require('fs');
-
-/**
- * Main application entry file.
- * Please note that the order of loading is important.
- */
-
-//Load configurations
-//if test env, load example file
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
-    config = require('./config/config'),
-    mongoose = require('mongoose');
-
-//Bootstrap db connection
-var db = mongoose.connect(config.db);
-
-//Bootstrap models
-var models_path = __dirname + '/app/models';
-var walk = function(path) {
-    fs.readdirSync(path).forEach(function(file) {
-        var newPath = path + '/' + file;
-        var stat = fs.statSync(newPath);
-        if (stat.isFile()) {
-            if (/(.*)\.(js|coffee)/.test(file)) {
-                require(newPath);
-            }
-        } else if (stat.isDirectory()) {
-            walk(newPath);
-        }
-    });
-};
-walk(models_path);
+var express = require('express');
 
 var app = express();
 
-//express settings
-require('./config/express')(app);
+// setup jade
+app.set('views', __dirname + '/client/views');
+app.set('view engine', 'jade');
 
-//Bootstrap routes
-require('./config/routes')(app);
+// serve those statics from here
+app.use(express.static(__dirname + '/public'));
 
-//Start the app by listening on <port>
-var port = config.port;
-app.listen(port);
-console.log('Express app started on port ' + port);
+// this catches the request that first comes to domain
+app.get('/', function (req, res) {
+    // 'index' tells to render index.jade file to html
+    res.render('index',
+        // title is passed as a variable to index.jade file
+        { title : 'Etusivu' }
+    )
+});
 
-//expose app
-exports = module.exports = app;
+app.listen(process.env.PORT || 3000);
+
