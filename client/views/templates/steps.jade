@@ -1,0 +1,78 @@
+body(ng-controller="InitialInfoCtrl")
+    .col-lg-3
+        h3 Stages
+        div.list-group
+            a.list-group-item(ng-class="active1")
+                | Main information
+            a.list-group-item(ng-class="active2")
+                | Purpose of calculations
+            a.list-group-item(ng-class="active3")
+                | Application And Processes
+.col-lg-9
+    form(role='form')
+        .row(ng-show="mainShown")
+            h3 Main information
+            .col-xs-4
+                .form-group
+                        label(for="customername") Customer name
+                        input(type="text", class="form-control input-min", placeholder='customer name', id="customername", ng-model="customerName")
+                .form-group
+                    label(for="sitelocation") Site location
+                    select(id="sitelocation", class="form-control", ng-model="country", ng-options="country.name for country in countries")
+            .col-lg-9
+                .radio
+                    label
+                        input(type="radio", value="0", checked, name="caseOption")
+                        | Start a case from beginning
+                .radio
+                    label
+                        input(type="radio", value="1", name="caseOption")
+                        | Use existing case information (eg. sales case, quotation or sizing)
+                button.btn.btn-primary(ng-click="show('purpose')") Save and continue
+
+        .row(ng-show="purposeShown")
+            h3 Purpose of calculations
+            .col-lg-7
+                .radio
+                    label
+                        input(type="radio", value="0", checked, name="purposeOption")
+                        | TCO/LCC for one equipment
+                .radio
+                    label
+                        input(type="radio", value="1", name="purposeOption")
+                        | Comparative calculation between technologies
+                .radio
+                    label
+                        input(type="radio", value="2", name="purposeOption")
+                        | Comparative calculation between current and preferred situation
+                button.btn.btn-primary(ng-click="show('application')") Save and continue
+
+        .row(ng-show="applicationShown")
+            h3 Application And Processes
+            .col-lg-7
+                h4 Main application
+                .input-group.col-lg-8
+                    input.form-control(type="text", placeholder="search for an application", id="applicationSearch")
+                    span.input-group-btn
+                        button.btn.btn-default(type="button") Select
+            .col-lg-9
+                h4 Technologies
+                .col-lg-8
+                    .checkbox
+                        label
+                            input(type="checkbox")
+                            | Size reduction and control
+                    .checkbox
+                        label
+                            input(type="checkbox")
+                            | Upgrading
+                    .checkbox
+                        label
+                            input(type="checkbox")
+                            | Solid-liquid separation
+                    .checkbox
+                        label
+                            input(type="checkbox")
+                            | Automation
+            .col-lg-9
+                a.btn.btn-primary(ng-href='#/report', ng-click='setQuery()') Save and continue
