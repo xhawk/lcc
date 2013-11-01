@@ -1,0 +1,23 @@
+.row.col-xs-offset-1
+    .col-xs-4
+        h2 Add product
+        .form-group
+            label(for="customername") Product name
+            input(type="text", class="form-control input-min", placeholder='product name', id="customername", ng-model="product .name")
+        .form-group
+            label(for="productsize") Product size
+            input(type="text", class="form-control input-min", placeholder='product size', id="productsize", ng-model="product.size")
+
+    .col-lg-11
+        button.btn.btn-primary(ng-click="add()") Add
+
+        h3 Products
+        table
+            thead
+                tr
+                    th name
+                    th size
+            tbody
+                tr(ng-repeat="product in products")
+                    td {{product.name}}
+                    td {{product.size}}
