@@ -2,12 +2,12 @@ lcc
 ===
 
 1. Directories
-..* client - client side code
-..* views - views are the paths in the browser navigation field
-..* templates - angularjs templates that are rendered inside views
-..* public - static resources
-..* js - app specific javascript code
-..* lib - 3rd party libraries ex. twitter bootstrap, angular, ...
+* client - client side code
+* views - views are the paths in the browser navigation field
+* templates - angularjs templates that are rendered inside views
+* public - static resources
+* js - app specific javascript code
+* lib - 3rd party libraries ex. twitter bootstrap, angular, ...
 
 2. Development
 * With Vagrant
