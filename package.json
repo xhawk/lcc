@@ -10,7 +10,8 @@
     },
     "dependencies": {
         "express": "latest",
-        "jade": "latest"
+        "jade": "latest",
+        "bower": "latest"
     },
     "devDependencies": {
         "supertest": "latest",

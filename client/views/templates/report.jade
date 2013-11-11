@@ -8,4 +8,7 @@ body(ng-controller="InitialInfoCtrl")
             a.list-group-item
                 | Application And Processes
 
-    div Valittiin maa: {{report.customerName}}
+    .col-lg-8
+        div Valittiin maa: {{report.customerName}}
+
+        div(d3-bars bar-height='20', bar-padding='5')

@@ -23,6 +23,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular-bootstrap": "~0.6.0"
+    "angular": "1.0.8",
+    "angular-resource": "1.0.8",
+    "bootstrap": "~3.0.2",
+    "d3": "~3.3.9"
   }
 }

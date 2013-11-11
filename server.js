@@ -12,6 +12,7 @@ app.set('view engine', 'jade');
 
 // serve those statics from here
 app.use(express.static(__dirname + '/public'));
+app.use('/libs', express.static(__dirname + '/bower_components'));
 
 // this catches the request that first comes to domain
 app.get('/', function(req, res){
